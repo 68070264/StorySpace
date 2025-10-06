@@ -1,0 +1,129 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* พื้นหลังและฟอนต์ */
+  body {
+    background-color: #ffd9e3; /* ชมพูพาสเทล */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    min-height: 100vh;
+  }
+  
+  /* ---------------- NAVBAR แบบแฟ้ม ---------------- */
+  nav {
+    display: flex;
+    justify-content: flex-start;  /* ชิดซ้าย */
+    align-items: flex-end;
+    margin: 25px 0 0 50px;        /* เว้นจากขอบซ้ายเล็กน้อย */
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0;
+    background: transparent;
+    padding: 0;
+  }
+  
+  nav li {
+    position: relative;
+  }
+  
+  /* แท็บพื้นฐาน */
+  nav a {
+    display: block;
+    padding: 0.8rem 2.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #333;
+    border-radius: 15px 15px 0 0;
+    border: 1px solid rgba(0,0,0,0.1);
+    position: relative;
+    top: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  /* สีพาสเทลของแต่ละแท็บ */
+  nav li:nth-child(1) a { background-color: #fef6a0; } /* เหลือง */
+  nav li:nth-child(2) a { background-color: #c5f4c6; } /* เขียวมิ้นท์ */
+  nav li:nth-child(3) a { background-color: #c8e4ff; } /* ฟ้า */
+  nav li:nth-child(4) a { background-color: #f7ccf5; } /* ม่วงชมพู */
+  
+  /* Hover: ยกขึ้นนิดนึง */
+  nav a:hover {
+    top: 2px;
+    filter: brightness(0.95);
+  }
+  
+  /* -------- ACTIVE แต่ละแท็บ -------- */
+  nav li:nth-child(1) a.active {      /* Home */
+    background-color: #fff58f;
+    box-shadow: 0 -2px 10px rgba(255, 224, 80, 0.5);
+    top: 0;
+    z-index: 2;
+  }
+  
+  nav li:nth-child(2) a.active {      /* To-do list */
+    background-color: #a6ecae;
+    box-shadow: 0 -2px 10px rgba(120, 200, 100, 0.4);
+    top: 0;
+    z-index: 2;
+  }
+  
+  nav li:nth-child(3) a.active {      /* Timer */
+    background-color: #a8d4ff;
+    box-shadow: 0 -2px 10px rgba(90, 160, 255, 0.4);
+    top: 0;
+    z-index: 2;
+  }
+  
+  nav li:nth-child(4) a.active {      /* 🌟 */
+    background-color: #eca8f3;
+    box-shadow: 0 -2px 10px rgba(200, 80, 200, 0.4);
+    top: 0;
+    z-index: 2;
+  }
+  
+  /* ------------------------------------ */
+  
+  /* เนื้อหา */
+  .content {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .content h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px #fff;
+  }
+  
+  /* กล่องรูป */
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .container img {
+    width: 180px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.15);
+    transform: rotate(calc(-5deg + 10deg * var(--i)));
+    transition: transform 0.3s ease;
+  }
+  
+  .container img:hover {
+    transform: scale(1.05);
+  }
+  
