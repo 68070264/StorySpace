@@ -18,9 +18,19 @@
     <section class="content">
         <h1>Welcome to story Space</h1>
         <div class="container">
-            <img>
+            <img src="{{ url_for('static', filename='IMG_4005.PNG') }}" id="myBtn" class="clickable-image" alt="Click Me">
         </div>
     </section>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Pop-up!</h2>
+        <p>นี่คือเนื้อหาที่อยู่ใน Pop-up ครับ</p>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 
 </html>
