@@ -1,45 +1,52 @@
 body {
   position: relative;
+  margin: 0;
+  min-height: 100vh;
   background-image: url('IMG_4009.PNG');
   background-repeat: no-repeat;
   background-attachment: fixed; 
-  background-size: 100% 100%;
-  margin: 0;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
 }
 
-
-#myBtn {
-    position: absolute;
-
-    /* --- เปลี่ยนจาก px เป็น % --- */
-    top: 165%;   /* ค่าสมมติ ลองเริ่มจากค่านี้น้อยๆ */
-    left: 34%;  /* ค่าสมมติ */
-    width: 31%;    /* ทำให้ขนาดของปุ่มยืดหดตามไปด้วย */
-}
-
-/* เพิ่ม --- รูปภาพที่คลิกได้ --- */
 .clickable-image {
     cursor: pointer;
     transition: transform 0.2s;
-    width: 200px; /* ปรับขนาดได้ตามต้องการ */
+    position: absolute;
 }
 
 .clickable-image:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
-/* --- สไตล์ของ Pop-up (Modal) --- */
+#todoBtn {
+    width: 32%;
+    top: 11.75%;
+    left: 33.75%;
+}
 
-/* พื้นหลังสีดำโปร่งแสง */
+#clockBtn {
+    width: 32%;
+    top: 36%;
+    left: 4.50%;
+}
+
+#bottleBtn {
+    width: 31.5%;
+    top: 34.75%;
+    left: 70%;
+}
+
 .modal {
-    display: none; /* ซ่อนไว้เป็นค่าเริ่มต้น */
-    position: fixed; /* ทำให้ลอยทับทุกอย่าง */
+    display: none;
+    position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* สีดำโปร่งแสง */
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* กล่องเนื้อหา Pop-up */
