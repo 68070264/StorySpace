@@ -1,3 +1,13 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+้html, body {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  width: 100vw;
+  height: 100vh;
+}
 /* background */
 .scene {
     position: relative;
@@ -7,6 +17,10 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    overflow: hidden;
+    background-attachment: fixed;
+  }
+  body {
     overflow: hidden;
   }
   
