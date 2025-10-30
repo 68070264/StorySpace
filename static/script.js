@@ -1,78 +1,77 @@
-
-const openBtns = document.querySelectorAll('.clickable-image');
+const openBtns = document.querySelectorAll('.clickable-image, .hotspot');
 const closeBtns = document.querySelectorAll('.close-button');
 const modals = document.querySelectorAll('.modal');
 
-function closeAllmodals() {
-  modals.forEach(modal => {
-    modal.style.display = 'none';
+function closeAllModals() {
+  modals.forEach(m => {
+    m.style.display = 'none';
   });
+  document.body.style.overflow = '';
 }
 
-openBtns.forEach(button => {
-    button.addEventListener('click', () => {
-        closeAllmodals();
-        
-        const modalId = button.dataset.modalTarget;
-        const modalToOpen = document.getElementById(modalId);
-        
-        const contentUrl = button.dataset.contentUrl;
+function openModalFrom(button) {
+  closeAllModals();
 
-        if (contentUrl) {
-            const modalBody = modalToOpen.querySelector('.modal-body-content');
+  const modalId = button.dataset.modalTarget;
+  const contentUrl = button.dataset.contentUrl;
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
 
-            if (modalBody) {
-                modalBody.innerHTML = '<p>Loading...</p>';
-            }
-            
-            if (modalToOpen) {
-                modalToOpen.style.display = 'block';
-            }
+  const box = modal.querySelector('.modal-content');
+  const body = modal.querySelector('.modal-body-content');
 
-            fetch(contentUrl)
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.text();
-                })
-                .then(html => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const content = doc.querySelector('.content');
-                    
-                    if (modalBody) {
-                        if (content) {
-                            modalBody.innerHTML = content.innerHTML;
-                        } else {
-                            modalBody.innerHTML = doc.body.innerHTML;
-                        }
-                    }
-                })
-                .catch(error => {
-                    console.error('Failed to fetch modal content:', error);
-                    if (modalBody) {
-                        modalBody.innerHTML = '<p>Error loading content. Please try again.</p>';
-                    }
-                });
+  // เปิดฉากหลัง + กล่องทันที (ไม่ต้อง animate)
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  if (body) body.innerHTML = '<p>Loading...</p>';
 
-        } else {
-            if (modalToOpen) {
-                modalToOpen.style.display = 'block';
-            }
-        }
-    });
-});
+  if (contentUrl && body) {
+    fetch(contentUrl, { headers: { 'X-Requested-With': 'fetch' } })
+      .then(r => {
+        if (!r.ok) throw new Error('bad response');
+        return r.text();
+      })
+      .then(html => {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const content = doc.querySelector('.content');
+        body.innerHTML = content ? content.innerHTML : doc.body.innerHTML;
+      })
+      .catch(err => {
+        console.error('Failed to fetch modal content:', err);
+        body.innerHTML = '<p>Error loading content. Please try again.</p>';
+      });
+  }
+}
 
-closeBtns.forEach(button => {
-    button.addEventListener('click', () => {
-        const modalToClose = button.closest('.modal');
-        if (modalToClose) {
-            modalToClose.style.display = 'none';
-        }
-    });
-});
+openBtns.forEach(btn => btn.addEventListener('click', () => openModalFrom(btn)));
 
-window.addEventListener('click', event => {
-    if (event.target.classList.contains('modal')) {
-        event.target.style.display = 'none';
+closeBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const modal = btn.closest('.modal');
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
     }
+  });
 });
+
+window.addEventListener('click', e => {
+  if (e.target.classList.contains('modal')) {
+    e.target.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeAllModals();
+});
+
+// ✨ เพิ่มเอฟเฟกต์ hover ให้ hotspot เห็นง่าย
+/*document.querySelectorAll('.hotspot').forEach(hs => {
+  hs.addEventListener('mouseenter', () => {
+    hs.style.outline = '2px solid rgba(255,255,255,0.7)';
+  });
+  hs.addEventListener('mouseleave', () => {
+    hs.style.outline = 'none';
+  });
+});*/

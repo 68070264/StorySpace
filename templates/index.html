@@ -10,57 +10,42 @@
 </head>
 
 <body>
-    <nav>
-        <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('timer_page') }}">Timer</a>
-        <a href="{{ url_for('todolist_page') }}">To-do</a>
-    </nav>
-    <section class="content">
-        <h1>Welcome to story Space</h1>
-        <div class="container">
-            <img src="{{ url_for('static', filename='IMG_4006.PNG') }}" alt="Open Clock"
-                 id="clockBtn"
-                 class="clickable-image" 
-                 data-modal-target="clockModal"
-                 data-content-url="{{ url_for('timer_page') }}">
-            <img src="{{ url_for('static', filename='IMG_4005.PNG') }}" alt="Open Todo "
-                 id="todoBtn"
-                 class="clickable-image" 
-                 data-modal-target="todoModal"
-                 data-content-url="{{ url_for('todolist_page') }}">
-            <img src="{{ url_for('static', filename='IMG_4007.PNG') }}" alt="Open Bottle"
-                 id="bottleBtn"
-                 class="clickable-image" 
-                 data-modal-target="bottleModal"
-                 data-content-url="{{ url_for('openbotton_page') }}">
 
-        </div>
+    <!--background-->>
+    <section class="scene">
+        <!-- for click -->
+        <div class="hotspot" id="clockArea" data-modal-target="clockModal"
+            data-content-url="{{ url_for('timer_page') }}"></div>
+
+        <div class="hotspot" id="taskArea" data-modal-target="todoModal"
+            data-content-url="{{ url_for('todolist_page') }}"></div>
+
+        <div class="hotspot" id="bottleArea" data-modal-target="bottleModal"
+            data-content-url="{{ url_for('openbotton_page') }}"></div>
     </section>
-
-<div id="todoModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-         <div class="modal-body-content"></div>
-    </div>
-</div>
-
-<div id="clockModal" class="modal">
-    <div class="modal-content">
-        <span class = "close-button">&times;</span>
-        <div class="modal-body-content"></div>
+    <!-- POPUP MODALS -->
+    <div id="todoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-body-content"></div>
         </div>
     </div>
-</div>
 
-<div id="bottleModal" class="modal">
-    <div class="modal-content">
-        <span class = "close-button">&times;</span>
-        <div class="modal-body-content"></div>
+    <div id="clockModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-body-content"></div>
+        </div>
     </div>
-</div>
 
+    <div id="bottleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-body-content"></div>
+        </div>
+    </div>
 
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 
 </html>
