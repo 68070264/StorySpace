@@ -17,30 +17,24 @@ function openModalFrom(button) {
   const modal = document.getElementById(modalId);
   if (!modal) return;
 
-  const box = modal.querySelector('.modal-content');
   const body = modal.querySelector('.modal-body-content');
 
-  // เปิดฉากหลัง + กล่องทันที (ไม่ต้อง animate)
+  // เปิด popup ทันที
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  if (body) body.innerHTML = '<p>Loading...</p>';
 
-  if (contentUrl && body) {
-    fetch(contentUrl, { headers: { 'X-Requested-With': 'fetch' } })
-      .then(r => {
-        if (!r.ok) throw new Error('bad response');
-        return r.text();
-      })
-      .then(html => {
-        const doc = new DOMParser().parseFromString(html, 'text/html');
-        const content = doc.querySelector('.content');
-        body.innerHTML = content ? content.innerHTML : doc.body.innerHTML;
-      })
-      .catch(err => {
-        console.error('Failed to fetch modal content:', err);
-        body.innerHTML = '<p>Error loading content. Please try again.</p>';
-      });
-  }
+  // ✅ โหลดหน้า timer/todo/bottle ด้วย iframe (จะรัน JS ภายในได้ปกติ)
+  body.innerHTML = `
+    <iframe 
+      src="${contentUrl}" 
+      style="
+        width: 100%;
+        height: 80vh;
+        border: none;
+        border-radius: 12px;
+      ">
+    </iframe>
+  `;
 }
 
 openBtns.forEach(btn => btn.addEventListener('click', () => openModalFrom(btn)));
@@ -67,13 +61,12 @@ document.addEventListener('keydown', e => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-    modals.forEach(m => {
-      m.style.display = 'none';          // ซ่อน modal ทั้งหมด
-      m.classList.remove('show', 'hide'); // ล้างคลาสที่อาจเปิดค้าง
-    });
-    document.body.style.overflow = '';   // คืน scroll ปกติ
+  modals.forEach(m => {
+    m.style.display = 'none';
+    m.classList.remove('show', 'hide');
   });
-  
+  document.body.style.overflow = '';
+});
 
 // ✨ เพิ่มเอฟเฟกต์ hover ให้ hotspot เห็นง่าย
 /*document.querySelectorAll('.hotspot').forEach(hs => {
