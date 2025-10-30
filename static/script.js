@@ -15,32 +15,39 @@ function openModalFrom(button) {
   const modalId = button.dataset.modalTarget;
   const contentUrl = button.dataset.contentUrl;
   const modal = document.getElementById(modalId);
-  if (!modal) return;
-
-  const box = modal.querySelector('.modal-content');
+  if (!modal)return;
   const body = modal.querySelector('.modal-body-content');
-
-  // เปิดฉากหลัง + กล่องทันที (ไม่ต้อง animate)
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
   if (body) body.innerHTML = '<p>Loading...</p>';
 
   if (contentUrl && body) {
     fetch(contentUrl, { headers: { 'X-Requested-With': 'fetch' } })
-      .then(r => {
-        if (!r.ok) throw new Error('bad response');
-        return r.text();
-      })
+      .then(r => r.text())
       .then(html => {
-        const doc = new DOMParser().parseFromString(html, 'text/html');
-        const content = doc.querySelector('.content');
-        body.innerHTML = content ? content.innerHTML : doc.body.innerHTML;
+        
+        // 1. ฉีด HTML (เหมือนเดิม)
+        body.innerHTML = html;
+        
+        // --- 🌟🌟🌟 นี่คือส่วนที่ขาดหายไป 🌟🌟🌟 ---
+        // 2. เรียก "กล่องเครื่องมือ" ของ To-Do List มาทำงาน
+        
+        if (modalId === 'todoModal') {
+            if (window.initTodoApp) {
+                console.log("script.js: Calling window.initTodoApp()...");
+                window.initTodoApp(); // สั่งให้ติดตั้งปุ่ม!
+            } else {
+                console.error("script.js: FATAL ERROR! 'todo.js' did not load or initTodoApp is not defined.");
+            }
+        }
+
+        
       })
       .catch(err => {
-        console.error('Failed to fetch modal content:', err);
-        body.innerHTML = '<p>Error loading content. Please try again.</p>';
+        // (โค้ด catch error เหมือนเดิม)
       });
   }
+
 }
 
 openBtns.forEach(btn => btn.addEventListener('click', () => openModalFrom(btn)));
