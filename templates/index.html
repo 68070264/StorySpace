@@ -23,16 +23,24 @@
                  class="clickable-image" 
                  data-modal-target="clockModal"
                  data-content-url="{{ url_for('timer_page') }}">
+            <img src="{{ url_for('static', filename='IMG_4005.PNG') }}" alt="Open Todo "
+                 id="todoBtn"
+                 class="clickable-image" 
+                 data-modal-target="todoModal"
+                 data-content-url="{{ url_for('todolist_page') }}">
+            <img src="{{ url_for('static', filename='IMG_4007.PNG') }}" alt="Open Bottle"
+                 id="bottleBtn"
+                 class="clickable-image" 
+                 data-modal-target="bottleModal"
+                 data-content-url="{{ url_for('openbotton_page') }}">
 
-            <img src="{{ url_for('static', filename='IMG_4005.PNG') }}" id="todoBtn" class="clickable-image" data-modal-target="todoModal" alt="Open Todo ">
-            <img src="{{ url_for('static', filename='IMG_4007.PNG') }}" id="bottleBtn" class="clickable-image" data-modal-target="bottleModal" alt="Open Bottle">
         </div>
     </section>
+
 <div id="todoModal" class="modal">
     <div class="modal-content">
         <span class="close-button">&times;</span>
-        <h2>Pop-up!</h2>
-        <p>นี่คือเนื้อหาที่อยู่ใน Pop-up ครับ</p>
+         <div class="modal-body-content"></div>
     </div>
 </div>
 
@@ -40,15 +48,14 @@
     <div class="modal-content">
         <span class = "close-button">&times;</span>
         <div class="modal-body-content"></div>
-            <p> timmer </p></div>
+        </div>
     </div>
 </div>
 
 <div id="bottleModal" class="modal">
     <div class="modal-content">
         <span class = "close-button">&times;</span>
-        <h2>Bottle</h2>
-        <p> remember </p>
+        <div class="modal-body-content"></div>
     </div>
 </div>
 

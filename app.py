@@ -24,6 +24,10 @@ def timer_page():
 def todolist_page():
     return render_template("todolist.html")
 
+@app.route("/openbotton")
+def openbotton_page():
+    return render_template("openbotton.html")
+
 # ----------- SSE: stream countdown -----------
 def sse_countdown(total_seconds: int):
     """ส่งเวลานับถอยหลัง HH:MM:SS ทุก 1 วินาที ผ่าน Server-Sent Events"""
