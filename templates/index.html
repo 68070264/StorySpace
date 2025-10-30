@@ -18,12 +18,13 @@
     <section class="content">
         <h1>Welcome to story Space</h1>
         <div class="container">
+            <a href="{{ url_for('timer_page') }}">Timer
+                <img src = "{{ url_for('static', filename='IMG_4006.PNG') }}" alt="Open Clock">
+            </a>
             <img src="{{ url_for('static', filename='IMG_4005.PNG') }}" id="todoBtn" class="clickable-image" data-modal-target="todoModal" alt="Open Todo ">
-            <img src="{{ url_for('static', filename='IMG_4006.PNG') }}" id="clockBtn" class="clickable-image" data-modal-target="clockModal" alt="Open Clock">
             <img src="{{ url_for('static', filename='IMG_4007.PNG') }}" id="bottleBtn" class="clickable-image" data-modal-target="bottleModal" alt="Open Bottle">
         </div>
     </section>
-
 <div id="todoModal" class="modal">
     <div class="modal-content">
         <span class="close-button">&times;</span>
@@ -47,6 +48,7 @@
         <p> remember </p>
     </div>
 </div>
+
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
