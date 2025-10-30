@@ -66,6 +66,15 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeAllModals();
 });
 
+window.addEventListener('DOMContentLoaded', () => {
+    modals.forEach(m => {
+      m.style.display = 'none';          // ซ่อน modal ทั้งหมด
+      m.classList.remove('show', 'hide'); // ล้างคลาสที่อาจเปิดค้าง
+    });
+    document.body.style.overflow = '';   // คืน scroll ปกติ
+  });
+  
+
 // ✨ เพิ่มเอฟเฟกต์ hover ให้ hotspot เห็นง่าย
 /*document.querySelectorAll('.hotspot').forEach(hs => {
   hs.addEventListener('mouseenter', () => {
