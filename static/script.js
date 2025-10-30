@@ -11,12 +11,53 @@ function closeAllmodals() {
 
 openBtns.forEach(button => {
     button.addEventListener('click', () => {
-      closeAllmodals();
+        closeAllmodals();
+        
         const modalId = button.dataset.modalTarget;
         const modalToOpen = document.getElementById(modalId);
         
-        if (modalToOpen) {
-            modalToOpen.style.display = 'block';
+        const contentUrl = button.dataset.contentUrl;
+
+        if (contentUrl) {
+            const modalBody = modalToOpen.querySelector('.modal-body-content');
+
+            if (modalBody) {
+                modalBody.innerHTML = '<p>Loading...</p>';
+            }
+            
+            if (modalToOpen) {
+                modalToOpen.style.display = 'block';
+            }
+
+            fetch(contentUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.text();
+                })
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const content = doc.querySelector('.content');
+                    
+                    if (modalBody) {
+                        if (content) {
+                            modalBody.innerHTML = content.innerHTML;
+                        } else {
+                            modalBody.innerHTML = doc.body.innerHTML;
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Failed to fetch modal content:', error);
+                    if (modalBody) {
+                        modalBody.innerHTML = '<p>Error loading content. Please try again.</p>';
+                    }
+                });
+
+        } else {
+            if (modalToOpen) {
+                modalToOpen.style.display = 'block';
+            }
         }
     });
 });
