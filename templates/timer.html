@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
+<<<<<<< Updated upstream
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Countdown Timer</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -60,31 +61,49 @@
       text-align: center;
     }
   </style>
+=======
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>storySpace Timer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+>>>>>>> Stashed changes
 </head>
 
+<<<<<<< Updated upstream
 <body>
   <main id="timer-controller">
     <h1 style="text-align:center;">Python Countdown</h1>
+=======
+  <!-- คอนเทนเนอร์หลักของแอปจับเวลา -->
+  <div id="timer-controller">
+    <h2>⏳ StorySpace Timer</h2>
+>>>>>>> Stashed changes
 
-    <form id="timerForm">
-      <label>ชั่วโมง:</label>
-      <input type="number" id="hours" min="0" step="1" value="0" />
-      <label>นาที:</label>
-      <input type="number" id="minutes" min="0" max="59" step="1" value="0" />
-      <label>วินาที:</label>
-      <input type="number" id="seconds" min="0" max="59" step="1" value="0" />
-      <button type="submit">Start</button>
-      <button type="button" id="stopBtn">Stop</button>
+    <form id="timerForm" class="input-container">
+      <label>ชั่วโมง</label>
+      <input type="number" id="hours"   min="0" step="1" value="0">
+      <label>นาที</label>
+      <input type="number" id="minutes" min="0" max="59" step="1" value="0">
+      <label>วินาที</label>
+      <input type="number" id="seconds" min="0" max="59" step="1" value="0">
+
+      <button type="submit" data-action="START">Start</button>
+      <button type="button" id="stopBtn" data-action="STOP">Stop</button>
     </form>
 
     <div id="display">00:00:00</div>
     <div id="status" class="muted">Ready go!!</div>
+  </div>
 
+<<<<<<< Updated upstream
     <noscript>ต้องเปิดการใช้งาน JavaScript เพื่อให้ตัวจับเวลาทำงาน</noscript>
   </main>
 
   <!-- โหลดสคริปต์ให้แน่ใจว่าไฟล์ JS รันจริง -->
   <!--<script src="{{ url_for('static', filename='timer.js') }}"></script>-->
+=======
+  <!-- ถ้าเปิดหน้า timer.html โดยตรงให้โหลดไฟล์ JS นี้ด้วย -->
+  <script src="{{ url_for('static', filename='timer.js') }}"></script>
+>>>>>>> Stashed changes
 </body>
 
 </html>
