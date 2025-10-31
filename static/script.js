@@ -40,7 +40,6 @@ function openModalFrom(button) {
                 console.error("script.js: FATAL ERROR! 'todo.js' did not load or initTodoApp is not defined.");
             }
         }
-<<<<<<< Updated upstream
         if (modalId === 'clockModal') {
           if (window.initTimerApp) {
             console.log("script.js: initTimerApp(body)");
@@ -54,7 +53,6 @@ function openModalFrom(button) {
             window.initBottleApp(body);
           }
         }
-=======
         // หลังจาก body.innerHTML = content.innerHTML; แล้ว
         if (modalId === 'clockModal') {
           if (window.initTimerApp) {
@@ -63,8 +61,7 @@ function openModalFrom(button) {
             console.error('timer.js not loaded or initTimerApp missing');
           }
         }
-       
->>>>>>> Stashed changes
+      
       })
       .catch(err => {
         // (โค้ด catch error เหมือนเดิม)
