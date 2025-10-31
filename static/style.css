@@ -196,3 +196,20 @@
   position: relative;
   z-index: 1;
 }
+
+/* ---------- POPUP bottle ---------- */
+#bottleModal .modal-content {
+  background-color: rgb(192, 252, 255);
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+  color: #333;
+  text-shadow: none;
+  position: relative;
+  padding: 24px;
+  overflow: hidden;
+}
+
+#bottleModal .modal-content > * {
+  position: relative;
+  z-index: 1;
+}
