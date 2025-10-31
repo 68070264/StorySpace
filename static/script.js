@@ -40,8 +40,14 @@ function openModalFrom(button) {
                 console.error("script.js: FATAL ERROR! 'todo.js' did not load or initTodoApp is not defined.");
             }
         }
-
-        
+        if (modalId === 'clockModal') {
+          if (window.initTimerApp) {
+            console.log("script.js: initTimerApp(body)");
+            window.initTimerApp(body);             // ส่ง root ของ modal เข้าไป
+          } else {
+            console.error("timer.js ยังไม่โหลด หรือ initTimerApp ยังไม่ประกาศ");
+          }
+        }
       })
       .catch(err => {
         // (โค้ด catch error เหมือนเดิม)
