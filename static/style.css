@@ -120,6 +120,7 @@ body {
 .progress-container {
   width: 100%;
   background-color: #FCDFE3;
+  background-color: #eee;
   border-radius: 5px;
   height: 10px;
   margin-bottom: 15px;
