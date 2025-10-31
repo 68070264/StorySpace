@@ -225,6 +225,9 @@ body {
   padding: 0;
   margin: 18px auto 0;
   width: min(95%, 640px);
+  max-height: 40vh;
+  overflow-y: auto;
+  
 }
 #task-list li{
   display: flex;
