@@ -4,7 +4,6 @@
 ้html, body {
   margin: 0;
   padding: 0;
-  line-height: 0;
   width: 100vw;
   height: 100vh;
 }
@@ -88,14 +87,84 @@
     font-size: 24px;
     color: #666;
     cursor: pointer;
+    /* padding-left: 20px; */
   }
   
-  .close-button:hover {
-    color: #000;
-  }
+.close-button:hover {
+  color: #000;
+}
   
   /*.hotspot:hover {
     outline: 2px solid rgba(255, 255, 255, 0.7);
     background-color: rgba(255, 255, 255, 0.08);
     transition: 0.2s;
   }*/
+
+.progress-container {
+    width: 100%;
+    background-color: #eee;
+    border-radius: 5px;
+    height: 10px;
+    margin-bottom: 15px;
+    margin-right: 100px;
+}
+.progress-bar {
+    width: 0%; 
+    height: 10px;
+    background-color: #4CAF50;
+    border-radius: 5px;
+}
+
+/* 2. สไตล์สำหรับ "ขีดฆ่า" */
+#task-list li.completed span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+
+/* 🌟 สไตล์สำหรับ Footer ของ Todo (ที่วางปุ่ม) */
+.todo-footer {
+    display: flex;
+    justify-content: flex-end; /* 🌟 "จัดไปทางขวา" (flex-end) */
+    margin-top: 20px;          /* เว้นระยะห่างจาก list */
+    padding-top: 15px;         /* เว้นระยะห่างด้านบน */
+    border-top: 1px solid #eee; /* เพิ่มเส้นคั่นบางๆ */
+}
+
+/* 🌟 สไตล์สำหรับปุ่ม "Clear Completed" */
+#clear-completed-btn {
+    background-color: #6c757d; /* สีเทา */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+#clear-completed-btn:hover {
+    background-color: #5a6268;
+} 
+
+.memory-list-container {
+    max-height: 40vh; /* 🌟 จำกัดความสูง (สำคัญมาก) */
+    overflow-y: auto;   /* 🌟 ทำให้ "เลื่อนได้" (Scroll) 🌟 */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/* 🌟 สไตล์สำหรับ "กล่อง" Task แต่ละอัน 🌟 */
+.memory-item {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    
+    /* (ป้องกันข้อความยาวเกิน) */
+    word-wrap: break-word; 
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,34 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
-<body>
-   <div id="todo-controller">
-    
-    <h2>My To-Do List</h2>
 
-    <div class="input-container">
-        <input type="text" id="task-input" placeholder="What needs to be done?">
-        
-        <button id="add-task-btn" data-action="ADD_TASK">Add</button>
+<body>
+    <div id="todo-controller">
+
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+
+        <h2>My To-Do List</h2>
+
+        <div class="input-container">
+            <input type="text" id="task-input" placeholder="What needs to be done?">
+            <button id="add-task-btn" data-action="ADD_TASK">Add</button>
+        </div>
+
+        <ul id="task-list">
+            <li>Loading tasks...</li>
+        </ul>
+
+        <div class="todo-footer">
+        <button id="clear-completed-btn" data-action="CLEAR_COMPLETED">
+            Clear Completed
+        </button>
+
     </div>
 
-    <ul id="task-list">
-        <li>Loading tasks...</li>
-    </ul>
 
-</div>
 
 </body>
+
 </html>
