@@ -36,14 +36,13 @@ function weatherCodeToGroup(code) {
  */
 const weatherIcons = {
   // 🌟 เพิ่ม "Sunny"
-  "Sunny": 'static/icons/sunny.png', 
-  
-  "Cloudy": 'static/icons/cloudy.png',
-  "Raining": 'static/icons/raining.png',
+  "Sunny": '/static/sunny.PNG', 
+  "Cloudy": '/static/cloudy.PNG',
+  "Raining": '/static/raining.PNG',
   
   // 🌟 (ลบ "Clear", "Clear/Cloudy", "Snowing" ออกได้)
   // 🌟 "Unknown" ยังต้องมีไว้สำหรับตอน API error
-  "Unknown": 'static/icons/cloudy.png' 
+  "Unknown": '/static/cloudy.PNG' 
 };
 
 /**
