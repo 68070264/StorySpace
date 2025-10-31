@@ -1,6 +1,7 @@
 // static/starMemory.js (ฉบับอัปเกรด "2 ตู้เซฟ")
 
 // 🌟 1. เรามี "กุญแจ" 2 ดอก
+/*
 const ACTIVE_KEY = 'myStorySpace_ActiveTasks';
 const ARCHIVE_KEY = 'myStorySpace_ArchivedTasks';
 
@@ -31,4 +32,43 @@ function saveTasksToMemory(tasksArray) {
 window.starMemory = {
     loadTasks: loadTasksFromMemory,
     saveTasks: saveTasksToMemory
-};
+}; */
+
+function initBottleApp(rootContainer) {
+    console.log("initBottleApp() is called!");
+  
+    const container = rootContainer
+      ? rootContainer.querySelector('#bottle-controller')
+      : document.querySelector('#bottle-controller');
+  
+    if (!container) return;
+  
+    const btn = container.querySelector('#getQuoteBtn');
+    const box = container.querySelector('#quoteBox');
+  
+    const quotes = [
+      "วันนี้เธอทำได้ดีมากแล้วนะ 💖",
+      "พักหน่อยก็ได้นะ เธอเก่งมากเลย 🌷",
+      "ทุกก้าวเล็ก ๆ ก็คือความสำเร็จ ✨",
+      "อย่าลืมยิ้มให้ตัวเองด้วยนะ 😊",
+      "เหนื่อยก็พัก แต่ห้ามหยุดเชื่อในตัวเอง 💪",
+      "โลกยังมีอะไรดี ๆ รอให้เธอเจออยู่เสมอ 🌈",
+      "เธอคือเวอร์ชันที่ดีที่สุดของตัวเองแล้ว 💜"
+    ];
+  
+    btn.addEventListener('click', () => {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      box.textContent = quotes[randomIndex];
+    });
+  }
+  
+  // ถ้าเปิดหน้าโดยตรง
+  document.addEventListener('DOMContentLoaded', () => {
+    if (document.querySelector('#bottle-controller')) {
+      initBottleApp();
+    }
+  });
+  
+  // export สำหรับ popup
+  window.initBottleApp = initBottleApp;
+  
