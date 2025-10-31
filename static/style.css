@@ -121,7 +121,6 @@ body {
     background-color: rgba(255, 255, 255, 0.08);
     transition: 0.2s;
   }*/
-
 /* ---------- POPUP Todo list ---------- */
 #todoModal .modal-content {
   background:#FCDFE3;
@@ -132,12 +131,12 @@ body {
   overflow: hidden;
 }
 #todo-controller {
-  font-family: 'PixelPurl', monospace;
+  font-family: 'PixelFont', sans-serif;
   text-align: center;
 }
 
 #todo-controller h2 {
-  font-family: 'PixelPurl', monospace;
+  font-family: 'PixelFont', sans-serif;
   font-size: 3rem;
   color: #4c3228;
   letter-spacing: 1px;
@@ -166,14 +165,14 @@ body {
   content: "";
   position: absolute;
   top: 50%;
-  right: -16px; /* à¸‚à¸¢à¸±à¸šà¹ƒà¸«à¹‰à¹€à¸¥à¸¢à¸­à¸­à¸à¸¡à¸²à¸™à¸´à¸”à¸™à¸¶à¸‡ */
+  right: -16px; /* ขยับให้เลยออกมานิดนึง */
   transform: translateY(-50%);
-  width: 60px;   /* à¸‚à¸™à¸²à¸”à¸£à¸¹à¸› */
+  width: 60px;   /* ขนาดรูป */
   height: 60px;
   background: url('todo.png') center/contain no-repeat;
 }
 
-/* à¸à¸¥à¹ˆà¸­à¸‡ input + à¸›à¸¸à¹ˆà¸¡ Add */
+/* กล่อง input + ปุ่ม Add */
 .input-container{
   display: flex;
   gap: 10px;
@@ -184,9 +183,9 @@ body {
   margin: 12px auto;
 }
 
-/* âœ… à¸­à¸´à¸™à¸žà¸¸à¸•: à¸‚à¸­à¸šà¸à¸¥à¸¡ à¸‚à¸­à¸šà¹€à¸‚à¸µà¸¢à¸§ */
+/* ✅ อินพุต: ขอบกลม ขอบเขียว */
 #task-input{
-  font-family: 'PixelPurl', monospace;
+  font-family: 'PixelFont', sans-serif;
   flex: 1;
   min-width: 300px;
   max-width: none;
@@ -203,9 +202,9 @@ body {
 }
 #task-input::placeholder{ color: #777; }
 
-/* à¸›à¸¸à¹ˆà¸¡ Add task (à¸Šà¸¡à¸žà¸¹à¸—à¸¶à¸š à¸•à¸±à¸§à¸­à¸±à¸à¸©à¸£à¸™à¹‰à¸³à¸•à¸²à¸¥) */
+/* ปุ่ม Add task (ชมพูทึบ ตัวอักษรน้ำตาล) */
 #add-task-btn{
-  font-family: 'PixelPurl', monospace;
+  font-family: 'PixelFont', sans-serif;
   padding: 12px 20px;
   border: none;
   border-radius: 50px;
@@ -220,7 +219,7 @@ body {
 #add-task-btn:hover{ filter: brightness(1.05); transform: translateY(-1px); }
 #add-task-btn:active{ transform: translateY(1px); }
 
-/* âœ… à¸£à¸²à¸¢à¸à¸²à¸£ Task: à¸à¸¥à¹ˆà¸­à¸‡à¸ªà¸µà¹€à¸‚à¸µà¸¢à¸§à¸—à¸¶à¸š à¸‚à¸­à¸šà¸¡à¸™ */
+/* ✅ รายการ Task: กล่องสีเขียวทึบ ขอบมน */
 #task-list{
   list-style: none;
   padding: 0;
@@ -237,7 +236,7 @@ body {
   background: #b5c99A;
   color: #4c3228;
   border-radius: 18px;
-  font-family: 'PixelPurl', monospace;
+  font-family: 'PixelFont', sans-serif;
   font-size: 1.25rem;
   box-shadow: 0 3px 8px rgba(0,0,0,.08);
   transition: transform .1s ease, background-color .2s ease;
@@ -246,14 +245,14 @@ body {
   background: #b5c99A; 
   transform: translateY(-2px); }
 
-/* à¸Šà¸·à¹ˆà¸­ task */
+/* ชื่อ task */
 #task-list li span{
   flex: 1 1 auto;
   text-align: left;
   padding-left: 4px;
 }
 
-/* à¹€à¸¡à¸·à¹ˆà¸­à¸—à¸³à¹€à¸ªà¸£à¹‡à¸ˆ (à¸‚à¸µà¸”à¸†à¹ˆà¸²/à¸‹à¸µà¸”à¸¥à¸‡) */
+/* เมื่อทำเสร็จ (ขีดฆ่า/ซีดลง) */
 #task-list li.completed span{
   text-decoration: line-through;
   opacity: 0.7;
@@ -270,7 +269,7 @@ body {
   border-top: 1px dashed rgba(0,0,0,.15);
 }
 #clear-completed-btn{
-  font-family: 'PixelPurl', monospace;
+  font-family: 'PixelFont', sans-serif;
   background: #AF2413;
   color: #fff;
   border: none;
@@ -281,7 +280,6 @@ body {
 }
 #clear-completed-btn:hover{ filter: brightness(1.05); }
 #clear-completed-btn:active{ transform: translateY(1px); }
-
 
 /* ---------- POPUP TIMER ---------- */
 #clockModal .modal-content {
