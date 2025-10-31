@@ -1,221 +1,349 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
-้html, body {
+
+้html,
+body {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
 }
+
 /* background */
 .scene {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('IMG_4046.PNG');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    background-attachment: fixed;
-  }
-  body {
-    overflow: hidden;
-  }
-  
-  /* พื้นที่คลิก */
-  .hotspot {
-    position: absolute;
-    cursor: pointer;
-  }
-  
-  /* ---- ตำแหน่งคลิก ---- */
-  #clockArea {
-    top: 50%;
-    left: 10%;
-    width: 25%;
-    height: 30%;
-  }
-  
-  #taskArea {
-    top: 28%;
-    left: 40%;
-    width: 25%;
-    height: 24%;
-  }
-  
-  #bottleArea {
-    top: 53%;
-    left: 76%;
-    width: 30%;
-    height: 22%;
-  }
-  
-  #ForecastArea{
-    position:absolute; top:6%; left:9%; width:18%; height:28%;
-    cursor:pointer;
-    /* outline:2px dashed rgba(255,255,255,.4);  // เปิดไว้ตอนดีบักตำแหน่ง */
-  }
-  
-  /* modal */
-  .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
-  
-    /* ✅ จัดกลางแน่นอน */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* กล่อง popup */
-  .modal-content {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    width: min(90vw, 600px);
-    max-height: 85vh;
-    overflow: auto;
-    padding: 20px;
-    position: relative;
-    opacity: 1;
-    transform: none; /* ไม่มีการขยับ */
-  }
-  
-  /* ปุ่มปิด */
-  .close-button {
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    font-size: 24px;
-    color: #666;
-    cursor: pointer;
-    /* padding-left: 20px; */
-  }
-  
-  .close-button:hover {
-    color: #000;
-  }
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('IMG_4046.PNG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-attachment: fixed;
+}
 
-  /*.hotspot:hover {
+body {
+  overflow: hidden;
+}
+
+/* พื้นที่คลิก */
+.hotspot {
+  position: absolute;
+  cursor: pointer;
+}
+
+/* ---- ตำแหน่งคลิก ---- */
+#clockArea {
+  top: 50%;
+  left: 10%;
+  width: 25%;
+  height: 30%;
+}
+
+#taskArea {
+  top: 28%;
+  left: 40%;
+  width: 25%;
+  height: 24%;
+}
+
+#bottleArea {
+  top: 53%;
+  left: 76%;
+  width: 30%;
+  height: 22%;
+}
+
+#ForecastArea {
+  position: absolute;
+  top: 6%;
+  left: 9%;
+  width: 18%;
+  height: 28%;
+  cursor: pointer;
+  /* outline:2px dashed rgba(255,255,255,.4);  // เปิดไว้ตอนดีบักตำแหน่ง */
+}
+
+/* modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+
+  /* ✅ จัดกลางแน่นอน */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* กล่อง popup */
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  width: min(90vw, 600px);
+  max-height: 85vh;
+  overflow: auto;
+  padding: 20px;
+  position: relative;
+  opacity: 1;
+  transform: none;
+  /* ไม่มีการขยับ */
+}
+
+/* ปุ่มปิด */
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  /* padding-left: 20px; */
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+/*.hotspot:hover {
     outline: 2px solid rgba(255, 255, 255, 0.7);
     background-color: rgba(255, 255, 255, 0.08);
     transition: 0.2s;
   }*/
 
 .progress-container {
-    width: 100%;
-    background-color: #eee;
-    border-radius: 5px;
-    height: 10px;
-    margin-bottom: 15px;
-    margin-right: 100px;
+  width: 100%;
+  background-color: #eee;
+  border-radius: 5px;
+  height: 10px;
+  margin-bottom: 15px;
+  margin-right: 100px;
 }
+
 .progress-bar {
-    width: 0%; 
-    height: 10px;
-    background-color: #4CAF50;
-    border-radius: 5px;
+  width: 0%;
+  height: 10px;
+  background-color: #4CAF50;
+  border-radius: 5px;
 }
 
 /* 2. สไตล์สำหรับ "ขีดฆ่า" */
 #task-list li.completed span {
-    text-decoration: line-through;
-    color: #999;
+  text-decoration: line-through;
+  color: #999;
 }
 
 
 /* 🌟 สไตล์สำหรับ Footer ของ Todo (ที่วางปุ่ม) */
 .todo-footer {
-    display: flex;
-    justify-content: flex-end; /* 🌟 "จัดไปทางขวา" (flex-end) */
-    margin-top: 20px;          /* เว้นระยะห่างจาก list */
-    padding-top: 15px;         /* เว้นระยะห่างด้านบน */
-    border-top: 1px solid #eee; /* เพิ่มเส้นคั่นบางๆ */
+  display: flex;
+  justify-content: flex-end;
+  /* 🌟 "จัดไปทางขวา" (flex-end) */
+  margin-top: 20px;
+  /* เว้นระยะห่างจาก list */
+  padding-top: 15px;
+  /* เว้นระยะห่างด้านบน */
+  border-top: 1px solid #eee;
+  /* เพิ่มเส้นคั่นบางๆ */
 }
 
 /* 🌟 สไตล์สำหรับปุ่ม "Clear Completed" */
 #clear-completed-btn {
-    background-color: #6c757d; /* สีเทา */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.2s ease;
+  background-color: #6c757d;
+  /* สีเทา */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
 }
 
 #clear-completed-btn:hover {
-    background-color: #5a6268;
-} 
+  background-color: #5a6268;
+}
 
 .memory-list-container {
-    max-height: 40vh; /* 🌟 จำกัดความสูง (สำคัญมาก) */
-    overflow-y: auto;   /* 🌟 ทำให้ "เลื่อนได้" (Scroll) 🌟 */
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
+  max-height: 40vh;
+  /* 🌟 จำกัดความสูง (สำคัญมาก) */
+  overflow-y: auto;
+  /* 🌟 ทำให้ "เลื่อนได้" (Scroll) 🌟 */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 /* 🌟 สไตล์สำหรับ "กล่อง" Task แต่ละอัน 🌟 */
 .memory-item {
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 12px 15px;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    
-    /* (ป้องกันข้อความยาวเกิน) */
-    word-wrap: break-word; 
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  /* (ป้องกันข้อความยาวเกิน) */
+  word-wrap: break-word;
 }
 
 /* ---------- POPUP TIMER ---------- */
 #clockModal .modal-content {
   background: url('timer.png') center/cover no-repeat !important;
   border-radius: 20px;
-  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
   color: #fff;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   position: relative;
   padding: 24px;
   overflow: hidden;
 }
 
-/* ชั้นโปร่งนุ่มเบาๆ */
+/* ชั้นโปร่งนุ่มเบาๆ  */
 #clockModal .modal-content::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(3px);
   border-radius: 20px;
   z-index: 0;
 }
 
-#clockModal .modal-content > * {
+#clockModal .modal-content>* {
   position: relative;
   z-index: 1;
 }
 
-/* ---------- POPUP bottle ---------- */
-#bottleModal .modal-content {
-  background-color: rgb(192, 252, 255);
+/* --- 🌟 Forecast Modal (แบบกล่องซ้อนกล่อง) 🌟 --- */
+
+/* 1. ขนาด Modal (300x500) (เหมือนเดิม) */
+#forecastModal .modal-content {
+  width: min(90vw, 300px);
+  /* กว้าง 300px */
+  min-height: 500px;
+  /* สูง 500px */
+
+  /* 🌟 เอาพื้นหลังขาวของ .modal-content ออก */
+  /* เพื่อให้ #forecast-controller เป็นตัวกำหนดสีเอง */
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
+  position: relative;
+}
+
+/* 2. 'ไส้ใน' (#forecast-controller) ให้เป็น "พื้นหลังสีม่วง" */
+#forecast-controller {
+  background-color: #a8a2bd;
+  /* 🌟 สีม่วงของคุณ */
   border-radius: 20px;
-  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
-  color: #333;
-  text-shadow: none;
-  position: relative;
-  padding: 24px;
-  overflow: hidden;
+  padding: 20px;
+  /* 🌟 เว้นขอบ 20px รอบกล่องสีขาว */
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+  /* 🌟 จัดให้ "กล่องสีขาว" อยู่ตรงกลาง */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* 🌟 จัดกลาง */
 }
 
-#bottleModal .modal-content > * {
-  position: relative;
-  z-index: 1;
+/* 3. 🌟 (ใหม่) กล่องสีขาวข้างใน 🌟 */
+.forecast-content-wrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  /* ขอบมนน้อยกว่ากล่องนอก */
+  padding: 24px;
+  width: 100%;
+  /* ทำให้มันยืดเต็มพื้นที่ padding ของสีม่วง */
+  flex-grow: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* 🌟 จัดของข้างใน (วันที่, ไอคอน) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 4. ปรับสี "ข้อมูล" ภายในกล่องสีขาว (ให้เป็นสีเข้ม) */
+/* (เพราะพื้นหลังเป็นสีขาวแล้ว) */
+.forecast-content-wrapper .forecast-date {
+  color: #555;
+  /* 🌟 สีเข้ม */
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+}
+
+.forecast-content-wrapper .forecast-card {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  gap: 12px;
+  flex-direction: column;
+  align-items: center;
+  /* จัดไอคอน/อุณหภูมิ ให้อยู่กลาง */
+
+  /* เพิ่มส่วนนี้เพื่อให้มันยืดเต็มกล่องขาว */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.forecast-content-wrapper #weather-icon {
+  width: 120px;
+  height: 120px;
+  background: none;
+  border-radius: 0;
+}
+
+.forecast-content-wrapper .forecast-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-content-wrapper .forecast-temp {
+  color: #222;
+  /* 🌟 สีเข้ม */
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.forecast-content-wrapper .forecast-desc {
+  color: #666;
+  /* 🌟 สีเข้ม */
+  font-size: 1.1rem;
+  margin-top: 8px;
+}
+
+
+/* 5. ปุ่มปิด (X) (ใช้สีดำที่คุณตั้งค่ามา) */
+#forecastModal .close-button {
+  color: #171010;
+  /* 🌟 สีดำของคุณ */
+  opacity: 0.7;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 10;
+  /* ให้มันลอยทับทุกอย่าง */
+}
+
+#forecastModal .close-button:hover {
+  color: #2c2222;
+  opacity: 1;
 }

@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Moon Corner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forecast</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-  <main id="forcast-controller">
-    <h1>Forcast</h1>
+
+  <main id="forecast-controller">
+
+    <div class="forecast-content-wrapper">
+
+      <div id="forecast-date" class="forecast-date"></div>
+
+      <div class="forecast-card">
+
+        <div class="forecast-icon-container">
+          <img src="" alt="Weather Icon" id="weather-icon" />
+        </div>
+
+        <div class="forecast-info">
+          <div id="forecast-temp" class="forecast-temp">--°C</div>
+          <div id="forecast-desc" class="forecast-desc">Loading...</div>
+        </div>
+
+      </div>
+
+    </div>
   </main>
 </body>
+
 </html>
