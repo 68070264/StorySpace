@@ -48,6 +48,11 @@ function openModalFrom(button) {
             console.error("timer.js ยังไม่โหลด หรือ initTimerApp ยังไม่ประกาศ");
           }
         }
+        if (modalId === 'bottleModal') {
+          if (window.initBottleApp) {
+            window.initBottleApp(body);
+          }
+        }
       })
       .catch(err => {
         // (โค้ด catch error เหมือนเดิม)

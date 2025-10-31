@@ -1,22 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>storySpace</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
+    <style>
+        body {
+          font-family: "Poppins", sans-serif;
+          background: transparent; /* ✅ โปร่งใสเวลาอยู่ใน popup */
+          text-align: center;
+        }
+    
+        h1 {
+          margin-bottom: 16px;
+          color: #444;
+        }
+    
+        #getQuoteBtn {
+          background-color: #f8b8cd;
+          border: none;
+          border-radius: 10px;
+          padding: 10px 20px;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        }
+    
+        #getQuoteBtn:hover {
+          background-color: #f593ae;
+        }
+    
+        #quoteBox {
+          margin-top: 20px;
+          padding: 20px;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+          font-size: 1.2rem;
+          color: #333;
+          min-height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      </style>
+    
 </head>
+
 <body>
+<<<<<<< HEAD
    <div id="bottle-controller">
     
-    <h2>Star Memories</h2>
-    <p>นี่คือ Task ทั้งหมดที่คุณทำสำเร็จแล้ว:</p>
+    <h1>🍀 คำกำลังใจวันนี้ 🍀</h1>
 
-    <div id="memory-list" class="memory-list-container">
+    <button id="getQuoteBtn">สุ่มคำกำลังใจ</button>
+
+    <div id="quoteBox">กดปุ่มเพื่อรับพลังใจ 💕</div>
+
+    <!--<div id="memory-list" class="memory-list-container">
         <p>Loading memories...</p>
-    </div>
+    </div> -->
 
 </div>
+=======
+    <div id="bottle-controller">
+
+        <h2>Star Memories</h2>
+        <p>นี่คือ Task ทั้งหมดที่คุณทำสำเร็จแล้ว:</p>
+
+        <div id="memory-list" class="memory-list-container">
+            <p>Loading memories...</p>
+        </div>
+
+    </div>
+>>>>>>> 072244f7a877ca92dba6c78f1f9494b3fc7da993
 </body>
+
 </html>
