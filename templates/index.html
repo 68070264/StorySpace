@@ -14,15 +14,23 @@
     <!--background-->>
     <section class="scene">
         <!-- for click -->
-        <div class="hotspot" id="clockArea" data-modal-target="clockModal"
+        <div class="hotspot" id="clockArea" 
+            data-modal-target="clockModal"
             data-content-url="{{ url_for('timer_page') }}"></div>
 
-        <div class="hotspot" id="taskArea" data-modal-target="todoModal"
+        <div class="hotspot" id="taskArea" 
+            data-modal-target="todoModal"
             data-content-url="{{ url_for('todolist_page') }}"></div>
 
-        <div class="hotspot" id="bottleArea" data-modal-target="bottleModal"
+        <div class="hotspot" id="bottleArea" 
+            data-modal-target="bottleModal"
             data-content-url="{{ url_for('openbotton_page') }}"></div>
+
+        <div class="hotspot" id="ForecastArea"
+            data-modal-target="forecastModal"
+            data-content-url="{{ url_for('forecast_page') }}"></div>
     </section>
+
     <!-- POPUP MODALS -->
     <div id="todoModal" class="modal">
         <div class="modal-content">
@@ -45,9 +53,18 @@
         </div>
     </div>
 
+    <div id="forecastModal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <div class="modal-body-content"></div>
+        </div>
+      </div>
+      
+
     <script src="{{ url_for('static', filename='todo.js') }}"></script>
     <script src="{{ url_for('static', filename='starbottle.js') }}"></script>
     <script src="{{ url_for('static', filename='timer.js') }}"></script>
+    <script src="{{ url_for('static', filename='forecast.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 

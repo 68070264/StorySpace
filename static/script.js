@@ -61,6 +61,14 @@ function openModalFrom(button) {
             console.error('timer.js not loaded or initTimerApp missing');
           }
         }
+        if (modalId === 'forecastModal') {
+          if (window.initForecastApp) {
+            console.log("script.js: initForecastApp(body)");
+            window.initForecastApp(body);
+          } else {
+            console.error("forecast.js ยังไม่โหลด หรือ initForecastApp ไม่พบ");
+          }
+        }
       
       })
       .catch(err => {

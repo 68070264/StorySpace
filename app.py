@@ -28,6 +28,10 @@ def todolist_page():
 def openbotton_page():
     return render_template("openbotton.html")
 
+@app.route("/forecast")
+def forecast_page():
+    return render_template("forecast.html")
+
 # ----------- SSE: stream countdown -----------
 def sse_countdown(total_seconds: int):
     """ส่งเวลานับถอยหลัง HH:MM:SS ทุก 1 วินาที ผ่าน Server-Sent Events"""
