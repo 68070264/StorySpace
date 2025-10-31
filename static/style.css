@@ -200,32 +200,62 @@ body {
   word-wrap: break-word;
 }
 
-/* ---------- POPUP TIMER ---------- */
-#clockModal .modal-content {
-  background: url('timer.png') center/cover no-repeat !important;
+/* ---------- POPUP TIMER (นิ่ง) ---------- */
+#clockModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 2000; /* อยู่บนสุด */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#clockModal .outer-layer {
+  background: url('timer.png') center/cover no-repeat;
   border-radius: 20px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-  position: relative;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
   padding: 24px;
+  position: relative;
+  width: min(90vw, 600px);
+  max-height: 85vh;
   overflow: hidden;
 }
 
-/* ชั้นโปร่งนุ่มเบาๆ  */
-#clockModal .modal-content::before {
+#clockModal .modal-inner {
+  position: relative;
+  z-index: 1;
+}
+
+#clockModal .modal-inner > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ชั้นโปร่งนุ่มเบาๆ */
+#clockModal .outer-layer::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(3px);
+  background: rgba(0,0,0,0.25);
   border-radius: 20px;
   z-index: 0;
 }
 
-#clockModal .modal-content>* {
-  position: relative;
-  z-index: 1;
+/* ปุ่มปิดขวาสุด */
+#clockModal .close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#clockModal .close-button:hover {
+  color: #ccc;
 }
 
 /* --- 🌟 Forecast Modal (แบบกล่องซ้อนกล่อง) 🌟 --- */
