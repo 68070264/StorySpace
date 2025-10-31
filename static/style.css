@@ -4,12 +4,18 @@
   box-sizing: border-box;
 }
 
-้html,
-body {
+/* รีเซ็ต margin/padding ของ html กับ body */
+html, body {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
+}
+@font-face {
+  font-family: 'PixelPurl';
+  src: url('/static/fonts/PixelPurl.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* background */
@@ -117,83 +123,165 @@ body {
     transition: 0.2s;
   }*/
 
-.progress-container {
-  width: 100%;
-  background-color: #FCDFE3;
-  background-color: #eee;
-  border-radius: 5px;
-  height: 10px;
-  margin-bottom: 15px;
-  margin-right: 100px;
+/* ---------- POPUP Todo list ---------- */
+#todoModal .modal-content {
+  background:#FCDFE3;
+  border-radius: 20px;
+  text-shadow: none;
+  position: relative;
+  padding: 24px;
+  overflow: hidden;
+}
+#todo-controller {
+  font-family: 'PixelPurl', monospace;
+  text-align: center;
 }
 
-.progress-bar {
+#todo-controller h2 {
+  font-family: 'PixelPurl', monospace;
+  font-size: 3rem;
+  color: #4c3228;
+  letter-spacing: 1px;
+  margin: 6px 0 14px;
+}
+
+/* Progress bar */
+.progress-container{
+  width: min(92%, 560px);
+  margin: 0 auto 16px;
+  height: 12px;
+  background: #eee;
+  border-radius: 999px;
+  position:relative;
+  overflow: visible;
+}
+.progress-bar{
+  height: 12px;
   width: 0%;
-  height: 10px;
-  background-color: #4CAF50;
-  border-radius: 5px;
+  background: linear-gradient(90deg, #9FE7D7);
+  border-radius: 999px;
+  transition: width .25s ease;
+  position: relative;
+}
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -16px; /* ขยับให้เลยออกมานิดนึง */
+  transform: translateY(-50%);
+  width: 60px;   /* ขนาดรูป */
+  height: 60px;
+  background: url('todo.png') center/contain no-repeat;
 }
 
-/* 2. สไตล์สำหรับ "ขีดฆ่า" */
-#task-list li.completed span {
+/* กล่อง input + ปุ่ม Add */
+.input-container{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: min(95%, 760px);
+  margin: 12px auto;
+}
+
+/* ✅ อินพุต: ขอบกลม ขอบเขียว */
+#task-input{
+  font-family: 'PixelPurl', monospace;
+  flex: 1;
+  min-width: 300px;
+  max-width: none;
+  padding: 14px 18px;
+  font-size: 1.1rem;
+  background: #ffffff;
+  border: 3px solid #b5c99A;
+  border-radius: 50px;
+  outline: none;
+  transition: box-shadow .25s ease, border-color .2s ease;
+}
+#task-input:focus{
+  border-color: #b5c99A;
+}
+#task-input::placeholder{ color: #777; }
+
+/* ปุ่ม Add task (ชมพูทึบ ตัวอักษรน้ำตาล) */
+#add-task-btn{
+  font-family: 'PixelPurl', monospace;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: #f4a9c2;
+  color: #4c3228;
+  font-size: 1.1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+  transition: transform .08s ease, filter .2s ease;
+}
+#add-task-btn:hover{ filter: brightness(1.05); transform: translateY(-1px); }
+#add-task-btn:active{ transform: translateY(1px); }
+
+/* ✅ รายการ Task: กล่องสีเขียวทึบ ขอบมน */
+#task-list{
+  list-style: none;
+  padding: 0;
+  margin: 18px auto 0;
+  width: min(95%, 640px);
+}
+#task-list li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  background: #b5c99A;
+  color: #4c3228;
+  border-radius: 18px;
+  font-family: 'PixelPurl', monospace;
+  font-size: 1.25rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,.08);
+  transition: transform .1s ease, background-color .2s ease;
+}
+#task-list li:hover{ 
+  background: #b5c99A; 
+  transform: translateY(-2px); }
+
+/* ชื่อ task */
+#task-list li span{
+  flex: 1 1 auto;
+  text-align: left;
+  padding-left: 4px;
+}
+
+/* เมื่อทำเสร็จ (ขีดฆ่า/ซีดลง) */
+#task-list li.completed span{
   text-decoration: line-through;
-  color: #999;
+  opacity: 0.7;
 }
 
-
-/* 🌟 สไตล์สำหรับ Footer ของ Todo (ที่วางปุ่ม) */
-.todo-footer {
+/* Footer */
+.todo-footer{
   display: flex;
   justify-content: flex-end;
-  /* 🌟 "จัดไปทางขวา" (flex-end) */
-  margin-top: 20px;
-  /* เว้นระยะห่างจาก list */
-  padding-top: 15px;
-  /* เว้นระยะห่างด้านบน */
-  border-top: 1px solid #eee;
-  /* เพิ่มเส้นคั่นบางๆ */
+  gap: 8px;
+  padding-top: 12px;
+  margin: 10px auto 0;
+  width: min(95%, 640px);
+  border-top: 1px dashed rgba(0,0,0,.15);
 }
-
-/* 🌟 สไตล์สำหรับปุ่ม "Clear Completed" */
-#clear-completed-btn {
-  background-color: #6c757d;
-  /* สีเทา */
-  color: white;
+#clear-completed-btn{
+  font-family: 'PixelPurl', monospace;
+  background: #AF2413;
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 8px 12px;
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.2s ease;
+  transition: filter .2s ease, transform .08s ease;
 }
-
-#clear-completed-btn:hover {
-  background-color: #5a6268;
-}
-
-.memory-list-container {
-  max-height: 40vh;
-  /* 🌟 จำกัดความสูง (สำคัญมาก) */
-  overflow-y: auto;
-  /* 🌟 ทำให้ "เลื่อนได้" (Scroll) 🌟 */
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-}
-
-/* 🌟 สไตล์สำหรับ "กล่อง" Task แต่ละอัน 🌟 */
-.memory-item {
-  background-color: #fff;
-  border: 1px solid #eee;
-  border-radius: 5px;
-  padding: 12px 15px;
-  margin-bottom: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-  /* (ป้องกันข้อความยาวเกิน) */
-  word-wrap: break-word;
-}
+#clear-completed-btn:hover{ filter: brightness(1.05); }
+#clear-completed-btn:active{ transform: translateY(1px); }
 
 /* ---------- POPUP TIMER ---------- */
 #clockModal .modal-content {
