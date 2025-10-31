@@ -9,11 +9,20 @@
 
     <style>
         body {
-          font-family: "Poppins", sans-serif;
+          font-family: 'PixelFont';
+          font-size: 1.5rem;
           background: transparent; /* ✅ โปร่งใสเวลาอยู่ใน popup */
           text-align: center;
         }
     
+        #bottleModal.bottle-controller {
+          background:#ecdac5;
+          border-radius: 20px;
+          text-shadow: none;
+          position: relative;
+          padding: 24px;
+          overflow: hidden;
+}
         h1 {
           margin-bottom: 16px;
           color: #444;
@@ -37,9 +46,9 @@
           margin-top: 20px;
           padding: 20px;
           border-radius: 12px;
-          background: rgba(255, 255, 255, 0.8);
+          background: #DDC5A9;
           box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-          font-size: 1.2rem;
+          font-size: 1.6rem;
           color: #333;
           min-height: 80px;
           display: flex;
@@ -55,9 +64,9 @@
      
      <h1>🍀 Daily Support 🍀</h1>
  
-     <button id="getQuoteBtn">Click for motivation</button>
- 
      <div id="quoteBox">Get positive vibes 💕</div>
+
+     <button id="getQuoteBtn">Click for motivation</button>
  
      <!--<div id="memory-list" class="memory-list-container">
          <p>Loading memories...</p>
