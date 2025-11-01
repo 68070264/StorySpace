@@ -494,6 +494,10 @@ button:active {
 /* ===== กล่องใน (timer-controller) ===== */
 #timer-controller {
   background-image: url('timer.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   border: 3px solid #f4de7d;
   border-radius: 14px;
   padding: 20px 24px;
