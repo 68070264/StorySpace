@@ -10,14 +10,20 @@
   <style>
     body {
       font-family: 'PixelFont';
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       background: transparent; /* โปร่งใสเวลาอยู่ใน popup */
       text-align: center;
     }
 
-    /* พื้นหลัง popup ของ openbottle เท่านั้น */
+    /* ซ่อนปุ่ม X ด้านนอกเฉพาะ popup bottle */
+    #bottleModal > .modal-content > .close-button {
+      display: none !important;
+    }
+
+
+    /* กล่องหลักของ popup */
     #bottle-controller {
-      background: linear-gradient(145deg, #ffe6c8, #DDC5A9);
+      background: linear-gradient(145deg, #c6e2f2, #b2fcff);
       border-radius: 25px;
       box-shadow:
         0 4px 12px rgba(0, 0, 0, 0.15),
@@ -28,7 +34,7 @@
       max-width: 500px;
       margin: 60px auto;
       color: #444;
-      border: 3px solid #fff5eb;
+      border: 3px solid #a8abe3;
       backdrop-filter: blur(6px);
     }
 
@@ -37,8 +43,8 @@
       color: #444;
     }
 
-    /* ปุ่มเป็นรูป */
-    #bottle-controller #getQuoteBtn {
+    /* ปุ่มรูปภาพ */
+    #getQuoteBtn {
       background-color: transparent;
       background-image: url("{{ url_for('static', filename='IMG_4057.PNG') }}");
       background-size: cover;
@@ -51,36 +57,49 @@
       margin: 10px auto 0 auto;
       display: block;
       width: 210px;
-      height: 90px;
+      height: 110px;
     }
 
-    #bottle-controller #getQuoteBtn:active {
+    #getQuoteBtn:active {
       transform: scale(0.95);
     }
 
     /* กล่องข้อความ */
-    #bottle-controller #quoteBox {
+    #quoteBox {
       margin-top: 20px;
-      padding: 20px;
-      border-radius: 12px;
-      background: #F5C74D;
+      padding: 10px;
+      border-radius: 80px;
+      background: #eae8e5;
       box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       color: #333;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 80px;
+      border: 3px solid #a8abe3;
     }
 
-    /* ลบพื้นหลังเฉพาะ popup ของ openbottle */
-    #bottle-controller #bottleModal,
-    #bottle-controller .modal-content,
-    #bottle-controller .popup-container {
-      background: transparent !important;
-      box-shadow: none !important;
-      border: none !important;
+    /* ปุ่มปิด (อยู่ในกล่อง) */
+    .close-button {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 26px;
+      color: #666;
+      cursor: pointer;
     }
+
+    .close-button:hover {
+      color: #000;
+    }
+
+    /* ลบเงาปุ่มเฉพาะของ bottle */
+    #bottle-controller button,
+    #bottle-controller #getQuoteBtn {
+      box-shadow: none !important;
+    }
+
   </style>
 
 </head>
@@ -88,12 +107,26 @@
 <body>
   <div id="bottle-controller">
     <span class="close-button">&times;</span> <!-- ปุ่ม X -->
-    <h1> Daily Support </h1>
+    <h1>Daily Support</h1>
 
     <div id="quoteBox">Get positive vibes 💕</div>
 
     <button id="getQuoteBtn"></button>
   </div>
+
+  <script>
+    // ✅ ปิด popup bottle เมื่อกด X
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("close-button")) {
+        // หา modal ที่ครอบอยู่ (บรรจุ openbottle.html)
+        const modal = window.parent.document.querySelector("#bottleModal");
+        if (modal) {
+          modal.style.display = "none";
+          window.parent.document.body.style.overflow = "";
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>
