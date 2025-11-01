@@ -566,3 +566,11 @@ button:active {
   line-height: 1;
 }
 #clockModal .close-button:hover { color: #000; }
+
+
+/* ---------- POPUP BOTTLE (แค่กันoverride)---------- */
+#bottleModal .modal-content {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
