@@ -2,75 +2,91 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>storySpace</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>storySpace</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <style>
-        body {
-          font-family: 'PixelFont';
-          font-size: 1.5rem;
-          background: transparent; /* ✅ โปร่งใสเวลาอยู่ใน popup */
-          text-align: center;
-        }
-    
-        #bottleModal.bottle-controller {
-          background:#ecdac5;
-          border-radius: 20px;
-          text-shadow: none;
-          position: relative;
-          padding: 24px;
-          overflow: hidden;
-}
-        h1 {
-          margin-bottom: 16px;
-          color: #444;
-        }
-    
-        #getQuoteBtn {
-          background-color: #f8b8cd;
-          border: none;
-          border-radius: 10px;
-          padding: 10px 20px;
-          font-size: 1rem;
-          cursor: pointer;
-          transition: background-color 0.2s;
-        }
-    
-        #getQuoteBtn:hover {
-          background-color: #f593ae;
-        }
-    
-        #quoteBox {
-          margin-top: 20px;
-          padding: 20px;
-          border-radius: 12px;
-          background: #DDC5A9;
-          box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-          font-size: 1.6rem;
-          color: #333;
-          min-height: 80px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      </style>
-    
+  <style>
+    body {
+      font-family: 'PixelFont';
+      font-size: 1.5rem;
+      background: transparent; /* ✅ โปร่งใสเวลาอยู่ใน popup */
+      text-align: center;
+    }
+
+    /* ✅ พื้นหลังของ popup จริง */
+    #bottle-controller {
+      background: linear-gradient(145deg, #ffe6c8, #DDC5A9);
+      border-radius: 25px;
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 2px 8px rgba(255, 255, 255, 0.4);
+      position: relative;
+      padding: 48px;
+      overflow: hidden;
+      max-width: 600px;
+      margin: 60px auto;
+      color: #444;
+      border: 3px solid #fff5eb;
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      margin-bottom: 16px;
+      color: #444;
+    }
+
+    #getQuoteBtn {
+      background-color: #f8b8cd;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    #getQuoteBtn:hover {
+      background-color: #f593ae;
+    }
+
+    #quoteBox {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #F5C74D;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+      font-size: 1.6rem;
+      color: #333;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ✅ วิธีที่ 1 — ลบพื้นหลังสีขาวของ popup container */
+    #bottleModal,
+    .modal-content,
+    .popup-container {
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+  </style>
+
 </head>
 
 <body>
-    <div id="bottle-controller">
-     
-     <h1>🍀 Daily Support 🍀</h1>
- 
-     <div id="quoteBox">Get positive vibes 💕</div>
+  <div id="bottle-controller">
+    <h1> Daily Support </h1>
 
-     <button id="getQuoteBtn">Click for motivation</button>
- 
-     <!--<div id="memory-list" class="memory-list-container">
-         <p>Loading memories...</p>
-     </div> -->
-    </div>
+    <div id="quoteBox">Get positive vibes 💕</div>
+    <p></p>
+
+    <button id="getQuoteBtn">Click for motivation</button>
+
+  </div>
 </body>
+
 </html>
