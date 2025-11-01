@@ -227,7 +227,6 @@ body {
   width: min(95%, 640px);
   max-height: 40vh;
   overflow-y: auto;
-  
 }
 #task-list li{
   display: flex;
@@ -283,35 +282,6 @@ body {
 }
 #clear-completed-btn:hover{ filter: brightness(1.05); }
 #clear-completed-btn:active{ transform: translateY(1px); }
-
-/* ---------- POPUP TIMER ---------- */
-#clockModal .modal-content {
-  background: url('timer.png') center/cover no-repeat !important;
-  border-radius: 20px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-  position: relative;
-  padding: 24px;
-  overflow: hidden;
-}
-
-/* ชั้นโปร่งนุ่มเบาๆ  */
-#clockModal .modal-content::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(3px);
-  border-radius: 20px;
-  z-index: 0;
-}
-
-#clockModal .modal-content>* {
-  position: relative;
-  z-index: 1;
-}
-
 /* --- 🌟 Forecast Modal (แบบกล่องซ้อนกล่อง) 🌟 --- */
 
 /* 1. ขนาด Modal (300x500) (เหมือนเดิม) */
@@ -442,3 +412,153 @@ body {
   color: #55453b;
   opacity: 1;
 }
+/* ---------- POPUP Timer ---------- */
+/* ============ ฟอร์ม/อินพุต/ปุ่ม ============ */
+#timerForm {
+  display: grid;
+  grid-template-columns: auto 90px auto 90px auto 90px; /* label/input x3 */
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 12px;
+  justify-content: start;
+  margin-top: 8px;
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+}
+/* ===== ปุ่มอยู่ในบรรทัดเดียวกันใต้ input ===== */
+#timerForm .button-row {
+  grid-column: 1 / -1; /* ใช้เต็มความกว้างของ grid */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* ระยะระหว่างปุ่ม */
+  margin-top: 10px;
+}
+/* ===== ปุ่มจับเวลา ===== */
+button {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'PixelFont', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+}
+button[data-action="START"] {
+  background: linear-gradient(180deg, #FFEA7A 0%, #FFD84F 100%);
+  color: #2f2600;
+}
+button[data-action="START"]:hover {
+  background: linear-gradient(180deg, #FFF29D 0%, #FFE463 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+/* Stop */
+button[data-action="STOP"] {
+  background: linear-gradient(180deg, #dd3d3d 0%, #dd3d3d 100%);
+  color: #2f2600;
+}
+button[data-action="STOP"]:hover {
+  background: linear-gradient(180deg,#dd3d3d 0%, #dd3d3d 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Label / Input ===== */
+#timerForm label {
+  font-family: 'PixelFont', sans-serif;
+  font-size: 1.2rem;
+  color: #3A2E00;
+  font-weight: 700;
+  margin: 0;
+}
+#timerForm input {
+  width: 88px;
+  padding: 6px 8px;
+  text-align: center;
+  border: 2px solid #E9D67A;
+  border-radius: 12px;
+  background: #FFFDF3;
+  color: #4B3E00;
+  font-weight: 600;
+}
+
+/* ===== กล่องใน (timer-controller) ===== */
+#timer-controller {
+  background-image: url('timer.png');
+  border: 3px solid #f4de7d;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: inset 0 1.5px 5px rgba(0, 0, 0, .08);
+}
+
+/* ===== กล่องนอก (outer-box) ===== */
+.outer-box {
+  background: #FFEE8C;
+  border: 5px solid #ffd84f;
+  border-radius: 20px;
+  width: min(90vw, 600px);
+  margin: 0 auto;
+  padding: 22px 20px 26px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .22);
+}
+/* ===== หัวข้อหลัก (Python Countdown) ===== */
+.outer-box h1 {
+  font-family: 'PixelFont', sans-serif;
+  font-size: 3rem;
+  text-align: center;
+  color: #3a2e00;
+}
+
+/* ===== เวลาและสถานะ ===== */
+#display {
+  font-family: 'PixelFont', sans-serif;
+  font-size: clamp(28px, 4.2vw, 40px);
+  font-weight: 800;
+  color: #2F2600;
+  background: #FFFFFFEE;
+  padding: 12px 22px;
+  margin-top: 18px;
+  border: 2px solid #F0D96B;
+  border-radius: 12px;
+}
+#status {
+  font-family: 'PixelFont', sans-serif;
+  margin-top: 8px;
+  color: #61583A;
+}
+
+/* ===== ปุ่มกากบาท (X) ===== */
+#clockModal .modal-content {
+  position: relative;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 16px !important;
+  width: min(90vw, 600px);
+  max-height: 85vh;
+  overflow: visible;
+}
+#clockModal .close-button {
+  position: absolute;
+  z-index: 5;
+  top: 22px;
+  right: 22px;
+  font-size: 22px;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+}
+#clockModal .close-button:hover { color: #000; }
