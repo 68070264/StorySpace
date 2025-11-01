@@ -11,11 +11,11 @@
     body {
       font-family: 'PixelFont';
       font-size: 1.5rem;
-      background: transparent; /* ✅ โปร่งใสเวลาอยู่ใน popup */
+      background: transparent; /* โปร่งใสเวลาอยู่ใน popup */
       text-align: center;
     }
 
-    /* ✅ พื้นหลังของ popup จริง */
+    /* พื้นหลัง popup ของ openbottle เท่านั้น */
     #bottle-controller {
       background: linear-gradient(145deg, #ffe6c8, #DDC5A9);
       border-radius: 25px;
@@ -23,35 +23,43 @@
         0 4px 12px rgba(0, 0, 0, 0.15),
         inset 0 2px 8px rgba(255, 255, 255, 0.4);
       position: relative;
-      padding: 48px;
+      padding: 32px;
       overflow: hidden;
-      max-width: 600px;
+      max-width: 500px;
       margin: 60px auto;
       color: #444;
       border: 3px solid #fff5eb;
       backdrop-filter: blur(6px);
     }
 
-    h1 {
+    #bottle-controller h1 {
       margin-bottom: 16px;
       color: #444;
     }
 
-    #getQuoteBtn {
-      background-color: #f8b8cd;
+    /* ปุ่มเป็นรูป */
+    #bottle-controller #getQuoteBtn {
+      background-color: transparent;
+      background-image: url("{{ url_for('static', filename='IMG_4057.PNG') }}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       border: none;
-      border-radius: 10px;
-      padding: 10px 20px;
-      font-size: 1rem;
+      outline: none;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: transform 0.1s;
+      margin: 10px auto 0 auto;
+      display: block;
+      width: 210px;
+      height: 90px;
     }
 
-    #getQuoteBtn:hover {
-      background-color: #f593ae;
+    #bottle-controller #getQuoteBtn:active {
+      transform: scale(0.95);
     }
 
-    #quoteBox {
+    /* กล่องข้อความ */
+    #bottle-controller #quoteBox {
       margin-top: 20px;
       padding: 20px;
       border-radius: 12px;
@@ -59,16 +67,16 @@
       box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
       font-size: 1.6rem;
       color: #333;
-      min-height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
+      min-height: 80px;
     }
 
-    /* ✅ วิธีที่ 1 — ลบพื้นหลังสีขาวของ popup container */
-    #bottleModal,
-    .modal-content,
-    .popup-container {
+    /* ลบพื้นหลังเฉพาะ popup ของ openbottle */
+    #bottle-controller #bottleModal,
+    #bottle-controller .modal-content,
+    #bottle-controller .popup-container {
       background: transparent !important;
       box-shadow: none !important;
       border: none !important;
@@ -82,10 +90,8 @@
     <h1> Daily Support </h1>
 
     <div id="quoteBox">Get positive vibes 💕</div>
-    <p></p>
 
-    <button id="getQuoteBtn">Click for motivation</button>
-
+    <button id="getQuoteBtn"></button>
   </div>
 </body>
 
