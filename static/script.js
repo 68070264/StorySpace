@@ -41,7 +41,19 @@ function openModalFrom(button) {
         // Bottle
         if (modalId === 'bottleModal' && window.initBottleApp) {
           window.initBottleApp(body);
+
+          // ✅ รอให้เนื้อหาโหลดเสร็จแล้วค่อย bind ปุ่มปิด
+          setTimeout(() => {
+            const closeBtn = body.querySelector('.close-button');
+            if (closeBtn) {
+              closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+              });
+            }
+          }, 100);
         }
+
 
         // Forecast
         if (modalId === 'forecastModal' && window.initForecastApp) {

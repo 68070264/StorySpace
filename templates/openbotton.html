@@ -2,66 +2,147 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>storySpace</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>storySpace</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <style>
-        body {
-          font-family: "Poppins", sans-serif;
-          background: transparent; /* ✅ โปร่งใสเวลาอยู่ใน popup */
-          text-align: center;
-        }
-    
-        h1 {
-          margin-bottom: 16px;
-          color: #444;
-        }
-    
-        #getQuoteBtn {
-          background-color: #f8b8cd;
-          border: none;
-          border-radius: 10px;
-          padding: 10px 20px;
-          font-size: 1rem;
-          cursor: pointer;
-          transition: background-color 0.2s;
-        }
-    
-        #getQuoteBtn:hover {
-          background-color: #f593ae;
-        }
-    
-        #quoteBox {
-          margin-top: 20px;
-          padding: 20px;
-          border-radius: 12px;
-          background: rgba(255, 255, 255, 0.8);
-          box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-          font-size: 1.2rem;
-          color: #333;
-          min-height: 80px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      </style>
-    
+  <style>
+    body {
+      font-family: 'PixelFont';
+      font-size: 1.6rem;
+      background: transparent;
+      text-align: center;
+    }
+
+    #bottleModal > .modal-content > .close-button {
+      display: none !important;
+    }
+
+    #bottle-controller {
+      background: linear-gradient(145deg, #c6e2f2, #b2fcff);
+      border-radius: 25px;
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 2px 8px rgba(255, 255, 255, 0.4);
+      position: relative;
+      padding: 32px;
+      overflow: hidden;
+      max-width: 500px;
+      margin: 60px auto;
+      color: #444;
+      border: 4px solid #a2cbe3;
+      backdrop-filter: blur(6px);
+    }
+
+    #bottle-controller h1 {
+      margin-bottom: 16px;
+      color: #444;
+    }
+
+    #getQuoteBtn {
+      background-color: transparent;
+      background-image: url("{{ url_for('static', filename='IMG_4057.PNG') }}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: transform 0.1s;
+      margin: 10px auto 0 auto;
+      display: block;
+      width: 210px;
+      height: 110px;
+    }
+
+    #getQuoteBtn:hover {
+      transform: scale(1.03); /* ทำให้ปุ่มขยายใหญ่ขึ้น 5% */
+    }
+
+    #getQuoteBtn:active {
+      transform: scale(0.97); /* ทำให้ปุ่มหดลง 5% */
+      transition: transform 0.05s; /* ทำให้การกดรวดเร็วขึ้น */
+    }
+
+    #quoteBox {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 80px;
+      background: #eae8e5;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+      font-size: 1.7rem;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+      border: 3px solid #a8abe3;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 26px;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .close-button:hover {
+      color: #000;
+    }
+
+    #bottle-controller button,
+    #bottle-controller #getQuoteBtn {
+      box-shadow: none !important;
+    }
+
+    /* 💌 เพิ่มภาพจดหมายพิกเซลน่ารัก */
+    .float-paper {
+      position: absolute;
+      width: 60px;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .p1 {
+      left: 50px;
+      bottom: 248px;
+      animation-delay: 0s;
+      width: 70px;
+      height: 70px;
+    }
+
+  </style>
+
 </head>
 
 <body>
-    <div id="bottle-controller">
-     
-     <h1>🍀 Daily Support 🍀</h1>
- 
-     <button id="getQuoteBtn">Click for motivation</button>
- 
-     <div id="quoteBox">Get positive vibes 💕</div>
- 
-     <!--<div id="memory-list" class="memory-list-container">
-         <p>Loading memories...</p>
-     </div> -->
-    </div>
+  <div id="bottle-controller">
+    <span class="close-button">&times;</span>
+
+    <!-- 💌 จดหมายพิกเซลตกแต่ง -->
+    <img src="{{ url_for('static', filename='paperpixel.png') }}" class="float-paper p1">
+
+    <h1>Daily Support</h1>
+
+    <div id="quoteBox">Get positive vibes 💕</div>
+
+    <button id="getQuoteBtn"></button>
+  </div>
+
+  <script>
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("close-button")) {
+        const modal = window.parent.document.querySelector("#bottleModal");
+        if (modal) {
+          modal.style.display = "none";
+          window.parent.document.body.style.overflow = "";
+        }
+      }
+    });
+  </script>
 </body>
+
 </html>

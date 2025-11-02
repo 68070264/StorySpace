@@ -6,89 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Countdown Timer</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 720px;
-      background: transparent;
-      /* padding: 0 16px; */
-    }
-
-    h1 {
-      margin: 0 0 8px;
-    }
-
-    form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    input[type="number"] {
-      padding: 8px 10px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      width: 90px;
-      text-align: center;
-    }
-
-    button {
-      padding: 8px 14px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-      cursor: pointer;
-      background-color: #f7f7f7;
-    }
-
-    button:hover {
-      background-color: #eee;
-    }
-
-    #display {
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin: 16px 0 6px;
-      text-align: center;
-    }
-
-    .muted {
-      color: #666;
-      font-size: .95rem;
-      text-align: center;
-    }
-  </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>storySpace Timer</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
 </head>
 
 <body>
-  <main id="timer-controller">
-    <h1 style="text-align:center;">Python Countdown</h1>
-  <!-- คอนเทนเนอร์หลักของแอปจับเวลา -->
-  <div id="timer-controller">
-    <h2>⏳ StorySpace Timer</h2>
+  <main id="timer-root">
+    <div class="outer-box">
+      <h1 style="text-align:center;">Timer</h1>
+      <div id="timer-controller">
 
-    <form id="timerForm" class="input-container">
-      <label>ชั่วโมง</label>
-      <input type="number" id="hours"   min="0" step="1" value="0">
-      <label>นาที</label>
-      <input type="number" id="minutes" min="0" max="59" step="1" value="0">
-      <label>วินาที</label>
-      <input type="number" id="seconds" min="0" max="59" step="1" value="0">
-
-      <button type="submit" data-action="START">Start</button>
-      <button type="button" id="stopBtn" data-action="STOP">Stop</button>
-    </form>
-
-    <div id="display">00:00:00</div>
-    <div id="status" class="muted">Ready go!!</div>
-  </div>
-    <noscript>ต้องเปิดการใช้งาน JavaScript เพื่อให้ตัวจับเวลาทำงาน</noscript>
+        <form id="timerForm">
+          <label>hours</label>
+          <input type="number" id="hours" min="0" step="1" value="0">
+          <label>minutes</label>
+          <input type="number" id="minutes" min="0" max="59" step="1" value="0">
+          <label>seconds</label>
+          <input type="number" id="seconds" min="0" max="59" step="1" value="0">
+        
+          <div class="button-row">
+            <button type="submit" data-action="START">Start</button>
+            <button type="button" id="stopBtn" data-action="STOP">Stop</button>
+          </div>
+        </form>
+        
+        <div id="display">00:00:00</div>
+        <div id="status" class="muted">Ready go!!</div>
+      </div><!-- /#timer-controller -->
+    </div><!-- /.outer-box -->
   </main>
 </body>
 
