@@ -113,7 +113,11 @@ function initTodoApp() {
             if (action === 'TOGGLE_TASK') { toggleTaskComplete(event.target.closest('li').dataset.id); }
             if (action === 'CLEAR_COMPLETED') { clearCompletedTasks(); }
         });
-        taskInput.addEventListener('keypress', (e) => { });
+        taskInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addTodoItem(); // 🌟 ถ้ากด 'Enter' ➡ ให้เรียก "Add Task"
+            }
+        });
         controller.dataset.listenerAttached = 'true';
     }
 
