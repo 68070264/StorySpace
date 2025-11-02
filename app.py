@@ -26,7 +26,7 @@ def todolist_page():
 
 @app.route("/openbotton")
 def openbotton_page():
-    return render_template("openbotton.html")
+    return render_template("bottle.html")
 
 @app.route("/forecast")
 def forecast_page():

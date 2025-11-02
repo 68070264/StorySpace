@@ -57,12 +57,12 @@
     }
 
     #getQuoteBtn:hover {
-      transform: scale(1.03); /* ทำให้ปุ่มขยายใหญ่ขึ้น 5% */
+      transform: scale(1.03);
     }
 
     #getQuoteBtn:active {
-      transform: scale(0.97); /* ทำให้ปุ่มหดลง 5% */
-      transition: transform 0.05s; /* ทำให้การกดรวดเร็วขึ้น */
+      transform: scale(0.97);
+      transition: transform 0.05s;
     }
 
     #quoteBox {
@@ -98,7 +98,6 @@
       box-shadow: none !important;
     }
 
-    /* 💌 เพิ่มภาพจดหมายพิกเซลน่ารัก */
     .float-paper {
       position: absolute;
       width: 60px;
@@ -121,14 +120,9 @@
 <body>
   <div id="bottle-controller">
     <span class="close-button">&times;</span>
-
-    <!-- 💌 จดหมายพิกเซลตกแต่ง -->
     <img src="{{ url_for('static', filename='paperpixel.png') }}" class="float-paper p1">
-
     <h1>Daily Support</h1>
-
     <div id="quoteBox">Get positive vibes 💕</div>
-
     <button id="getQuoteBtn"></button>
   </div>
 
