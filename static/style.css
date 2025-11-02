@@ -568,10 +568,6 @@ button:active {
 #clockModal .close-button:hover { color: #000; }
 
 /* ---------- ปรับเฉพาะ popup bottle ---------- */
-#bottleModal {
-  background: transparent !important; /* เอา overlay ดำเทาออก */
-}
-
 #bottleModal .modal-content {
   background: transparent !important;
   box-shadow: none !important;

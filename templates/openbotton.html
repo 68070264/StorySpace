@@ -11,17 +11,14 @@
     body {
       font-family: 'PixelFont';
       font-size: 1.6rem;
-      background: transparent; /* โปร่งใสเวลาอยู่ใน popup */
+      background: transparent;
       text-align: center;
     }
 
-    /* ซ่อนปุ่ม X ด้านนอกเฉพาะ popup bottle */
     #bottleModal > .modal-content > .close-button {
       display: none !important;
     }
 
-
-    /* กล่องหลักของ popup */
     #bottle-controller {
       background: linear-gradient(145deg, #c6e2f2, #b2fcff);
       border-radius: 25px;
@@ -34,7 +31,7 @@
       max-width: 500px;
       margin: 60px auto;
       color: #444;
-      border: 3px solid #a8abe3;
+      border: 4px solid #a2cbe3;
       backdrop-filter: blur(6px);
     }
 
@@ -43,7 +40,6 @@
       color: #444;
     }
 
-    /* ปุ่มรูปภาพ */
     #getQuoteBtn {
       background-color: transparent;
       background-image: url("{{ url_for('static', filename='IMG_4057.PNG') }}");
@@ -60,11 +56,15 @@
       height: 110px;
     }
 
-    #getQuoteBtn:active {
-      transform: scale(0.95);
+    #getQuoteBtn:hover {
+      transform: scale(1.03); /* ทำให้ปุ่มขยายใหญ่ขึ้น 5% */
     }
 
-    /* กล่องข้อความ */
+    #getQuoteBtn:active {
+      transform: scale(0.97); /* ทำให้ปุ่มหดลง 5% */
+      transition: transform 0.05s; /* ทำให้การกดรวดเร็วขึ้น */
+    }
+
     #quoteBox {
       margin-top: 20px;
       padding: 10px;
@@ -80,7 +80,6 @@
       border: 3px solid #a8abe3;
     }
 
-    /* ปุ่มปิด (อยู่ในกล่อง) */
     .close-button {
       position: absolute;
       top: 12px;
@@ -94,10 +93,25 @@
       color: #000;
     }
 
-    /* ลบเงาปุ่มเฉพาะของ bottle */
     #bottle-controller button,
     #bottle-controller #getQuoteBtn {
       box-shadow: none !important;
+    }
+
+    /* 💌 เพิ่มภาพจดหมายพิกเซลน่ารัก */
+    .float-paper {
+      position: absolute;
+      width: 60px;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .p1 {
+      left: 50px;
+      bottom: 248px;
+      animation-delay: 0s;
+      width: 70px;
+      height: 70px;
     }
 
   </style>
@@ -106,7 +120,11 @@
 
 <body>
   <div id="bottle-controller">
-    <span class="close-button">&times;</span> <!-- ปุ่ม X -->
+    <span class="close-button">&times;</span>
+
+    <!-- 💌 จดหมายพิกเซลตกแต่ง -->
+    <img src="{{ url_for('static', filename='paperpixel.png') }}" class="float-paper p1">
+
     <h1>Daily Support</h1>
 
     <div id="quoteBox">Get positive vibes 💕</div>
@@ -115,10 +133,8 @@
   </div>
 
   <script>
-    // ✅ ปิด popup bottle เมื่อกด X
     document.addEventListener("click", (e) => {
       if (e.target.classList.contains("close-button")) {
-        // หา modal ที่ครอบอยู่ (บรรจุ openbottle.html)
         const modal = window.parent.document.querySelector("#bottleModal");
         if (modal) {
           modal.style.display = "none";
