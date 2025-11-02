@@ -558,8 +558,8 @@ button:active {
 #clockModal .close-button {
   position: absolute;
   z-index: 5;
-  top: 22px;
-  right: 22px;
+  top: 35px;
+  right: 6px;
   font-size: 22px;
   color: #666;
   cursor: pointer;
